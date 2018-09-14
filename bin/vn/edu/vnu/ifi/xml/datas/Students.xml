@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+	<student>
+		<matricule>23L-KEN-2018</matricule>
+		<noms>KENGNI</noms>
+		<prenoms>Hippolyte</prenoms>
+		<dateNaiss>22sept.1988</dateNaiss>
+		<lieuNaiss>Afrique</lieuNaiss>
+		<adresse>Cameroun</adresse>
+		<telephone>0961378004</telephone>
+		<niveau>MasterI</niveau>
+		<police>ND8RGR.KEN.2018</police>
+	</student>
+	<student>
+		<matricule>XUY-ABC-2018</matricule>
+		<noms>ABC</noms>
+		<prenoms>Dea</prenoms>
+		<dateNaiss>12sept.2018</dateNaiss>
+		<lieuNaiss>Asie</lieuNaiss>
+		<adresse>QAU</adresse>
+		<telephone>9865</telephone>
+		<niveau>LicenceII</niveau>
+		<police>VAZG6D.ABC.2018</police>
+	</student>
+<student>
+<matricule>SK1-BAN-2018</matricule>
+<noms>BANGAZERYaser</noms>
+<prenoms>ASDFJMpo </prenoms>
+<dateNaiss>5sept.2018</dateNaiss>
+<lieuNaiss>Afrique</lieuNaiss>
+<adresse>4512dfb</adresse>
+<telephone>784512</telephone>
+<niveau>LicenceIII</niveau>
+<police>FUDK0V.BAN.2018</police>
+</student>
+</students>

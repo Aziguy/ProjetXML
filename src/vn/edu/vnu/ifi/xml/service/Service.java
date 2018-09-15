@@ -197,7 +197,7 @@ public class Service implements IService {
 	
 	/**
 	 * Cette méthode permet de récupérer la liste de tous les étudiants du fichier xml
-	 * @return 
+	 * @return listeEtudiants
 	 */
 	public Vector<Object> getAllStudentsService(){
 		Vector<Object> listeEtudiants = null;
@@ -232,7 +232,6 @@ public class Service implements IService {
 				data9 = n9.item(i).getFirstChild().getTextContent();
 				
 				String line = data1 + " " + data2 + " " + data3 + " " + data4 + " " + data5 + " " + data6 + " " + data7 + " " + data8 + " " + data9;
-				System.out.println(line);
 				StringTokenizer st2 = new StringTokenizer(line, " ");
 				while (st2.hasMoreTokens())
 					listeEtudiants.addElement(st2.nextToken());
@@ -318,10 +317,55 @@ public class Service implements IService {
 	
 	/** 
 	 * Cette méthode permet de rechercher un étudiant du fichier xml
-	 * @return 
+	 * @return listeEtudiantTrouve
 	 */
 	public Vector<Object> rechercherStudentService(String search){
-		return null;
+		Vector<Object> listeEtudiantTrouve = null;
+		try {
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse("src\\vn\\edu\\vnu\\ifi\\xml\\datas\\Students.xml");
+
+			NodeList listEtudiants = doc.getElementsByTagName("student");
+			NodeList nl = doc.getElementsByTagName("matricule");
+			NodeList n2 = doc.getElementsByTagName("noms");
+			NodeList n3 = doc.getElementsByTagName("prenoms");
+			NodeList n4 = doc.getElementsByTagName("dateNaiss");
+			NodeList n5 = doc.getElementsByTagName("lieuNaiss");
+			NodeList n6 = doc.getElementsByTagName("adresse");
+			NodeList n7 = doc.getElementsByTagName("telephone");
+			NodeList n8 = doc.getElementsByTagName("niveau");
+			NodeList n9 = doc.getElementsByTagName("police");
+			
+			String data1 = null, data2 = null, data3 = null, data4 = null, data5 = null, data6 = null, data7 = null, data8 = null, data9 = null;
+			listeEtudiantTrouve = new Vector<Object>();
+			
+			for (int i = 0; i < listEtudiants.getLength(); i++) {
+				Element etudiant = (Element) listEtudiants.item(i);
+				if (etudiant.getElementsByTagName("noms").item(0).getTextContent().equals(search)) {
+					data1 = nl.item(i).getFirstChild().getTextContent();
+					data2 = n2.item(i).getFirstChild().getTextContent();
+					data3 = n3.item(i).getFirstChild().getTextContent();
+					data4 = n4.item(i).getFirstChild().getTextContent();
+					data5 = n5.item(i).getFirstChild().getTextContent();
+					data6 = n6.item(i).getFirstChild().getTextContent();
+					data7 = n7.item(i).getFirstChild().getTextContent();
+					data8 = n8.item(i).getFirstChild().getTextContent();
+					data9 = n9.item(i).getFirstChild().getTextContent();
+					
+					String line = data1 + " " + data2 + " " + data3 + " " + data4 + " " + data5 + " " + data6 + " " + data7 + " " + data8 + " " + data9;
+					StringTokenizer st2 = new StringTokenizer(line, " ");
+					while (st2.hasMoreTokens())
+						listeEtudiantTrouve.addElement(st2.nextToken());
+				}
+				
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listeEtudiantTrouve;
 		
 	}
 	

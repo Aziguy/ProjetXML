@@ -356,61 +356,61 @@ public class GestionStudents extends JInternalFrame {
 		JButton btnEditEtu = new JButton("Modifier");
 		btnEditEtu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				if (studentSelect != null) {
-//					// code executé après le clic sur "Modifier"
-//
-//					// 3. Création de services et utilisation du contructeur générique. Elle prend
-//					// en paramètre un IDao
-//					dao = new Dao();
-//					service = new Service(dao);
-//
-//					// 1. Récupération des valeur saisies par l'utilisateur
-//
-//					String idClient = labelIdClient.getText();
-//					String noms = textFieldMatricule.getText();
-//					String prenoms = textFieldNoms.getText();
-//					String dateNaissance = textFieldPrenoms.getText();
-//					String telephone = textFieldTelephone.getText();
-//					String adresse = textFieldTelephone.getText();
-//					// int telephone = Integer.parseInt(textFieldTel.getText());
-//					Gestionnaires gestionnaireSelect = ((Gestionnaires) selectLieuNaiss.getSelectedItem());
-//					String idGestionnaireSelect = gestionnaireSelect.getIdGestionnaires();
-//
-//					// 2. Création d'un objet client puis, maj des attributs de l'objet client
-//
-//					Clients client = new Clients();
-//
-//					client.setIdClients(idClient);
-//					client.setNoms(noms);
-//					client.setPrenoms(prenoms);
-//					client.setDateNaissance(dateNaissance);
-//					client.setTelephone(telephone);
-//					client.setAdresse(adresse);
-//					client.setGestionnaires_idGestionnaires(idGestionnaireSelect);
-//
-//					// 3. On donne notre objet client à la méthode modifierClientsService de la
-//					// couche
-//					// service
-//
-//					int verifier = service.modifierClientsService(client);
-//
-//					if (verifier == 1) {
-//						JOptionPane.showMessageDialog(null,
-//								"Le client " + client.getNoms() + " " + client.getPrenoms()
-//										+ " a bien été modifié dans la Base de données",
-//								"Information!", JOptionPane.INFORMATION_MESSAGE);
-//
-//					} else {
-//						JOptionPane.showMessageDialog(null,
-//								"Erreur lors de la modification du client" + client.getNoms() + " "
-//										+ client.getPrenoms() + " dans la Base de donnees",
-//								"Alerte!", JOptionPane.ERROR_MESSAGE);
-//					}
-//
-//				} else {
-//					JOptionPane.showMessageDialog(null, "bien vouloir sélectionner un client de la liste", "Attention!",
-//							JOptionPane.WARNING_MESSAGE);
-//				}
+				if (studentSelect != null) {
+					// code executé après le clic sur "Modifier"
+
+					// 3. Création de services et utilisation du contructeur générique. Elle prend
+					// en paramètre un IDao
+					dao = new Dao();
+					service = new Service(dao);
+
+					// 1. Récupération des valeur saisies par l'utilisateur
+
+					String matricule = textFieldMatricule.getText();
+					String noms = textFieldNoms.getText();
+					String prenoms = textFieldPrenoms.getText();
+					String dateNaiss = ((JTextField) dateChooser.getDateEditor().getUiComponent()).getText();
+					String lieuNaiss = ((String) selectLieuNaiss.getSelectedItem());
+					String adresse = textFieldAdresse.getText();
+					String telephone = textFieldTelephone.getText();
+					String niveau = ((String) selectNiveau.getSelectedItem());
+					String police = textFieldPolice.getText();
+
+					// 2. Création d'un objet student puis, maj des attributs de l'objet student
+
+					Students student = new Students();
+					
+					student.setMatricule(matricule);
+					student.setNoms(noms);
+					student.setPrenoms(prenoms);
+					student.setDateNaissance(dateNaiss);
+					student.setLieuNaissance(lieuNaiss);
+					student.setAdresse(adresse);
+					student.setTelephone(telephone);
+					student.setNiveau(niveau);
+					student.setPolice(police);
+
+					// 3. On donne notre objet client à la méthode editStudentsService de la couche service
+
+					int verifier = service.editStudentsService(student);
+
+					if (verifier == 1) {
+						JOptionPane.showMessageDialog(null,
+								"Le client " + student.getNoms() + " " + student.getPrenoms()
+										+ " a bien été modifié dans la Base de données",
+								"Information!", JOptionPane.INFORMATION_MESSAGE);
+
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Erreur lors de la modification de l'étudiant " + student.getNoms() + " "
+										+ student.getPrenoms() + " dans le fichier XML",
+								"Alerte!", JOptionPane.ERROR_MESSAGE);
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "bien vouloir sélectionner un étudiant de la liste", "Attention!",
+							JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		btnEditEtu.setIcon(new ImageIcon(GestionStudents.class.getResource("/img/icons8_Edit_Property_32px.png")));
@@ -651,11 +651,6 @@ public class GestionStudents extends JInternalFrame {
 		selectNiveau.setEditable(true);
 		selectNiveau.setBounds(642, 61, 160, 20);
 		panel_1.add(selectNiveau);
-//		List<Gestionnaires> maListeGestionnaires = new ArrayList<Gestionnaires>();
-//		maListeGestionnaires = service.getAllGestionnairesService();
-//		for (Gestionnaires gestionnaire : maListeGestionnaires) {
-//			selectLieuNaiss.addItem(gestionnaire);
-//		}
 
 		labelIdClient = new JLabel("");
 		labelIdClient.setFont(new Font("Roboto Condensed Light", Font.BOLD, 13));
@@ -676,7 +671,6 @@ public class GestionStudents extends JInternalFrame {
 
 		// Appelle de la méthode pour afficher la liste des étudiants
 		affichage();
-		System.out.println("ok tout");
 
 		// Appelle de la méthode pour supprimer la barre de titre
 		remove_title_bar();
@@ -787,7 +781,7 @@ public class GestionStudents extends JInternalFrame {
 		textFieldMatricule.setText(studentSelect.getMatricule());
 		textFieldNoms.setText(studentSelect.getNoms());
 		textFieldPrenoms.setText(studentSelect.getPrenoms());
-		//dateChooser.setDateFormatString(studentSelect.getDateNaissance());
+		dateChooser.setDateFormatString(studentSelect.getDateNaissance());
 		selectLieuNaiss.setSelectedItem(studentSelect.getLieuNaissance());
 		textFieldAdresse.setText(studentSelect.getAdresse());
 		textFieldTelephone.setText(studentSelect.getTelephone());

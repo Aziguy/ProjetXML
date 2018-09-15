@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <students>
 	<student>
-		<matricule>23L-KEN-2018</matricule>
+		<matricule>59W-KEN-2018</matricule>
 		<noms>KENGNI</noms>
 		<prenoms>Hippolyte</prenoms>
-		<dateNaiss>22sept.1988</dateNaiss>
+		<dateNaiss>22août1988</dateNaiss>
 		<lieuNaiss>Afrique</lieuNaiss>
 		<adresse>Cameroun</adresse>
 		<telephone>0961378004</telephone>
 		<niveau>MasterI</niveau>
-		<police>ND8RGR.KEN.2018</police>
+		<police>0ZX19X.KEN.2018</police>
 	</student>
-	<student>
-		<matricule>XUY-ABC-2018</matricule>
-		<noms>ABC</noms>
-		<prenoms>Dea</prenoms>
-		<dateNaiss>12sept.2018</dateNaiss>
-		<lieuNaiss>Asie</lieuNaiss>
-		<adresse>QAU</adresse>
-		<telephone>9865</telephone>
-		<niveau>LicenceII</niveau>
-		<police>VAZG6D.ABC.2018</police>
-	</student>
-
 </students>
